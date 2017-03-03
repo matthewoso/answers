@@ -1,0 +1,106 @@
+
+5. Write function that translates a text to Pig Latin and back. English is translated to Pig Latin by taking the first letter of every word, moving it to the end of the word and adding "ay".
+
+"The quick brown fox" -> "Hetay uickqay rownbay oxfay".
+
+(source: https://adriann.github.io/programming_problems.html)
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+function pigWord(x)
+{
+	var arr = x.split("");
+	var end = arr[0].toLowerCase()+"ay";
+	var frnt = [arr[1]];
+	
+	for (var i = 2; i < arr.length; i++) 
+	{			
+		frnt.push(arr[i]);
+	}
+	
+	frnt = frnt.join("");	
+	return frnt + end;
+}
+
+function pigLatin (sentence)
+{
+	var splitSentence = sentence.split(" ");
+	var pigSentence = [];
+
+	for (var i = 0; i < splitSentence.length; i++) 
+	{	
+		// console.log(splitSentence[i]);
+
+		var pigW = pigWord(splitSentence[i]);
+
+		// console.log(pigW);
+
+		pigSentence.push(pigW);
+
+		var firstWord = pigSentence[0];
+		firstWordSplit = firstWord.split("");
+		firstWordSplit[0] = firstWordSplit[0].toUpperCase();
+		var cFirstWord = firstWordSplit.join("");
+		pigSentence[0] = cFirstWord;
+
+	}
+	return pigSentence.join(" ");
+}
+
+function unPigWord(x)
+{
+	var bArr = x.split("");
+	var backFrnt = bArr[bArr.length-3];
+	var backEnd = [bArr[0].toLowerCase()];
+	
+	for (var i = 1; i < bArr.length-3; i++) 
+	{			
+		backEnd.push(bArr[i]);
+	}
+	
+	backEnd = backEnd.join("");	
+	// console.log(backEnd);
+	return backFrnt + backEnd;
+}
+
+function unPigLatin (bSentence)
+{
+	var backSplitSentence = bSentence.split(" ");
+	var backSentence = [];
+
+	for (var i = 0; i < backSplitSentence.length; i++) 
+	{	
+		// console.log(backSplitSentence[i]);
+
+		var backW = unPigWord(backSplitSentence[i]);
+
+		// console.log(pigW);
+		
+		backSentence.push(backW);
+
+		var bfirstWord = backSentence[0];
+		bfirstWordSplit = bfirstWord.split("");
+		bfirstWordSplit[0] = bfirstWordSplit[0].toUpperCase();
+		var cbFirstWord = bfirstWordSplit.join("");
+		backSentence[0] = cbFirstWord;
+	}
+	return backSentence.join(" ");
+}
+
+var txt = pigLatin ("The quick brown fox");
+console.log (txt);
+
+console.log (unPigLatin (txt));
+
+
+</script>
+	
+</body>
+</html>

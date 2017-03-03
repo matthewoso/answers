@@ -1,0 +1,49 @@
+
+<!-- 
+3. Write a function which takes an array of integers > 0 and returns the first integer which does not appear in that array.
+[1,2,5] -> 3
+[1,2,3,4,5] -> 6
+[3,4,5] -> 1 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+	// var arr = [];
+
+	function missingFirstInt(arr)
+	{
+		var lastNum = arr[arr.length-1];
+
+		for (var i = 0; i < lastNum; i++) 
+			{
+				if (arr[0] !== 1)   
+				{
+					return 1;
+				} 
+				else if (arr[i] !== (i+1)) 
+				{
+					return (i+1);
+				}
+			}
+			return (lastNum+1);
+	}
+
+
+	console.log(missingFirstInt([1,2,5]));
+
+	console.log(missingFirstInt([1,2,3,4,5]));
+
+	console.log(missingFirstInt([3,4,5]));
+
+	</script>
+
+
+</body>
+</html>

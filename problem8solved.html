@@ -1,0 +1,132 @@
+8. Write a function which takes no input and returns an array of 10 distinct randomly generated integers between 1 and 100.
+
+-> [48, 5, 32, 2, 10, 11, 34, 95, 82, 93] (good!)
+-> [1, 1, 24, 63, 45, 84, 17, 11, 59, 13] (bad - duplicated number)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+
+	function findNotDuplicates(arr, rand)
+	{
+		for (var j = 0; j < arr.length; j++) 
+			{
+				if (rand === arr[j])		//if current random equall any existing array
+				{
+					return false;
+				}				
+			}
+		return true;
+	}
+
+
+	function createArr()
+	{
+		var arr = [];											//create an arr
+		arr[0] = Math.floor(Math.random() * 100) + 1; 		//generate first random (can't be a duplicate)	
+		//console.log(arr[0]);											
+
+			while (arr.length < 10) 							//until our arr is 10 int long
+			{
+				var rand = Math.floor(Math.random() * 100) + 1; //generate a random #						
+					//console.log(findNotDuplicates(arr, rand));
+					//console.log(rand);
+					if (findNotDuplicates(arr, rand) === true)
+
+					{
+						arr.push(rand);  
+						//console.log(arr);						//is not in the arr, add it
+					}
+				randomArr = arr;
+				//console.log(randomArr);	
+			}
+
+		return randomArr;
+		//console.log(randomArr);
+	}
+
+createArr();
+console.log(randomArr);
+
+
+	//erty solutions
+
+
+// 		function rands() 
+// 		{
+// 			var nums = [];  //the arr we are building
+
+// 			while (nums.length < 10) //until our arr is 10 int long
+// 			{
+// 				var rand = Math.floor(Math.random() * 100) + 1;  //random 1-100
+
+// 				var in_arr = false;
+
+// 				for (var i = 0; i < nums.length; i++) 
+// 				{
+
+// 					//this all seems reversed to me
+// 					if (nums[i] === rand)   // on[0] always undefined === a number --> false
+// 					{
+// 						in_arr = true;
+// 						break;				//need to understand better.  Cant return b/c not a function
+// 					}
+// 				}
+		
+// 				if (!in_arr) 
+// 				{
+// 					nums.push(rand);  //build the list of not duplicates
+// 				}
+// 			}
+
+// 			return nums;
+
+
+// 				if (nums[i] !== rand)
+// 				{
+// 					nums.push(rand);
+// 				}
+// 				else
+// 				{
+
+// 				}
+// 		}
+
+// //alternative - seperate random number functions and filter functions
+
+// function inArr(el, arr) //filter
+// 	{
+// 		for (var i = 0; i < arr.length; i++ )	
+// 		{
+// 			if (arr[i] === el) 	//check if arr element equals "el" - wtf is el - defined below as the result of the random
+// 			{
+// 				return true;
+// 			}
+// 		}
+// 		return false;
+// 	}
+
+// function randsTwo() {
+// 	var nums = [];
+
+// 	while (nums.length < 10) {
+// 		var rand = Math.floor(Math.random() * 100) + 1;
+
+// 		if (!inArr(rand, nums)) {
+// 			nums.push(rand);
+// 		}
+// 	}
+
+// 	return nums;
+// }
+	</script>
+	
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+<!-- 4. Write a function which takes an array of integers and returns an array with any duplicate integers removed.
+[1,1,2,3,1,2,3] -> [1,2,3]
+[1,4,4,4,2,2,4,4,4] -> [1,4,2] -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+
+function isNotInArr (x, arr)
+	{
+		for (var i = 0; i < arr.length; i++) 
+		{
+			if (x === arr[i])
+			{
+				return false;
+			}	
+		}
+		return true;
+	}
+
+	function removeDupInt(arr)
+	{
+		var noDupArr = [];	
+		noDupArr.push(arr[0]);
+
+		for (var i = 1; i < arr.length; i++) 
+			{
+				if (isNotInArr(arr[i], noDupArr))
+				{
+					noDupArr.push(arr[i]);
+				}
+			}
+			return noDupArr;
+	}
+
+	console.log(removeDupInt([1,4,4,4,2,2,4,4,4]));	
+	console.log(removeDupInt([1,1,2,3,1,2,3]));
+	// the tests below (included in the problem) don't work because you cannot compare equivalence of arrays, but the tests I wrote above say the functions work.
+	
+	// console.log(removeDupInt([1,1,2,3,1,2,3]) == [1,2,3]); 
+	
+	// console.log(removeDupInt([1,4,4,4,2,2,4,4,4]) == [1,4,2]);
+
+	</script>
+
+
+</body>
+</html>
